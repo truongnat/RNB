@@ -1,0 +1,10 @@
+# Ignore artifacts:
+build
+coverage
+cache
+.bundle
+.vscode
+.husky
+node_modules
+android
+ios
