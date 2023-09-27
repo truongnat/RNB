@@ -1,13 +1,22 @@
 module.exports = {
+  env: {
+    'jest/globals': true,
+  },
   root: true,
-  extends: [
-    '@react-native-community',
-    'plugin:react/recommended',
-    'plugin:react-native/all',
-    'prettier',
-  ],
-  plugins: ['prettier'],
+  extends: '@react-native',
   rules: {
-    'prettier/prettier': 'error',
+    'react-hooks/exhaustive-deps': 'off',
+    quotes: ['error', 'single'],
+    'object-curly-spacing': ['error', 'always'],
+    'array-bracket-spacing': ['error', 'never'],
+    'react/require-default-props': ['off'],
+    'react/react-in-jsx-scope': ['off'],
+    'react/default-props-match-prop-types': ['error'],
+    'react/sort-prop-types': ['error'],
+  },
+  settings: {
+    'import/resolver': {
+      'babel-module': {},
+    },
   },
 };

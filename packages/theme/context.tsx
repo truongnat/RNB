@@ -27,7 +27,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     return {
       theme: defaultTheme,
       isDark,
-      toggleDark: () => setIsDark((prev) => !prev),
+      toggleDark: () => setIsDark(prev => !prev),
     } as ThemeCtxType;
   }, [isDark]);
 

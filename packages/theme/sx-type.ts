@@ -1,5 +1,5 @@
-import { StyledProps } from './system';
+import type { StyledProps } from './system';
 
-export type SxProps = {
+export interface SxProps {
   sx?: StyledProps;
-};
+}

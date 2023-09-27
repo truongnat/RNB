@@ -1,7 +1,6 @@
-import { ApplicationScreenProps } from '@packages/@types';
 import { Text, View } from 'react-native';
 
-const Settings = ({ navigation }: ApplicationScreenProps) => {
+const Settings = () => {
   return (
     <View>
       <Text>Settings</Text>

@@ -7,20 +7,11 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@packages/*": [
-        "packages/*"
-      ],
-      "@packages": [
-        "packages"
-      ],
-    },
+      "@packages/*": ["packages/*"],
+      "@packages": ["packages"]
+    }
   },
-  "include": [
-    "packages/**/*",
-    "index.js",
-    "packages/@types",
-    "global.d.ts"
-  ],
+  "include": ["packages/**/*", "index.js", "global.d.ts"],
   "exclude": [
     "node_modules",
     "babel.config.js",

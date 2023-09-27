@@ -67,7 +67,7 @@ export type IThemeTypography<T = Dict> = {
     black: number;
   } & Dict['fontWeights'];
   lineHeights: {
-    normal: string;
+    normal: number;
     none: number;
     shorter: number;
     short: number;
@@ -203,6 +203,22 @@ export type IThemeShadows<T = Dict> = {
 export type IThemeComponent<T = Dict> = {
   button: {
     default: Partial<StyledProps>;
+    primary: Partial<StyledProps>;
+    danger: Partial<StyledProps>;
+    outline: Partial<StyledProps>;
+    invisible: Partial<StyledProps>;
+  };
+  typo: {
+    default: Partial<StyledProps>;
+    display: Partial<StyledProps>;
+    large: Partial<StyledProps>;
+    medium: Partial<StyledProps>;
+    small: Partial<StyledProps>;
+    subTitle: Partial<StyledProps>;
+    bodyL: Partial<StyledProps>;
+    bodyM: Partial<StyledProps>;
+    bodyS: Partial<StyledProps>;
+    caption: Partial<StyledProps>;
   };
 } & T;
 

@@ -10,7 +10,7 @@ export function omitKeyPropsStyleRn<T extends Dict = Dict>(props: T) {
   Object.keys(props).forEach((k: keyof T) => {
     if (
       typeof props[k] !== 'function' &&
-      !['children', 'style'].includes(k.toString())
+      !['children', 'style', 'ref'].includes(k.toString())
     ) {
       styleProps[k] = props[k];
     } else {
@@ -31,7 +31,7 @@ export const TypoNs = [
   'letterSpacings',
 ];
 
-export const getStylesTheme = (props: Dict) => {
+export const getStylesTheme = (props: Dict = {}) => {
   const dataSet = {} as Dict;
 
   Object.entries(props).forEach(([k, v]) => {
@@ -50,9 +50,11 @@ export const getStylesTheme = (props: Dict) => {
       const value = _.isObject(getValue)
         ? getFirstValueObject(getValue)
         : getValue;
-      if (property) dataSet[property] = value;
+      if (property) {
+        dataSet[property] = value;
+      }
       if (properties) {
-        properties.forEach((p) => {
+        properties.forEach(p => {
           dataSet[p] = value;
         });
       }
@@ -65,6 +67,6 @@ export const getStylesTheme = (props: Dict) => {
 };
 
 export const getPropsTheme = (props: Dict) => {
-  const [stylesProps, otherProps] = omitKeyPropsStyleRn(props);
-  return [getStylesTheme(stylesProps), otherProps];
+  const [stylesProps, { style, ...otherProps }] = omitKeyPropsStyleRn(props);
+  return [_.merge(getStylesTheme(stylesProps), style), otherProps];
 };

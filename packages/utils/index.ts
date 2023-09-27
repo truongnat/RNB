@@ -1,3 +1,1 @@
-export const shared = () => {
-  console.log('shared');
-};
+export * from './color';

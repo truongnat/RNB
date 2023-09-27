@@ -1,13 +1,10 @@
 import { ApplicationScreenProps } from '@packages/@types';
-import { useTheme } from '@packages/theme';
 import { useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { Box, Typo } from '@packages/components/core';
 
 const FlashScreen = ({ navigation }: ApplicationScreenProps) => {
-  const { theme } = useTheme();
-
   const init = async () => {
-    await new Promise((resolve) =>
+    await new Promise(resolve =>
       setTimeout(() => {
         resolve(true);
       }, 2000),
@@ -24,16 +21,14 @@ const FlashScreen = ({ navigation }: ApplicationScreenProps) => {
   }, []);
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: theme.colors.primary,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
+    <Box
+      flex={1}
+      bg={'primary'}
+      justifyContent={'center'}
+      alignItems={'center'}
     >
-      <Text>Loading...</Text>
-    </View>
+      <Typo>Loading...</Typo>
+    </Box>
   );
 };
 
