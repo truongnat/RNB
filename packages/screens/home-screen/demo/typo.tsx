@@ -29,7 +29,7 @@ export const DemoTypo = () => {
   };
 
   return (
-    <Box w="full" h="full" shadow="3xl" p="12">
+    <Box w="full" h="full" p="12">
       <Box bg="gray.200" rounded="xl" w="full" h="full" p="16">
         {variants.map(variant => (
           <Typo variant={variant} key={variant}>

@@ -8,11 +8,4 @@ export function extendTheme<T extends CustomThemeDict = CustomThemeDict>(
   return merge(defaultTheme, theme) as ITheme<T>;
 }
 
-export const customTheme = extendTheme({
-  components: {
-    input: {
-      default: {},
-      primary: {},
-    },
-  },
-});
+export const customTheme = extendTheme({});

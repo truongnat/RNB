@@ -24,8 +24,8 @@ export const Box = memo(
     const { sx, children, ...rest } = props;
 
     const getStyleBySx = getStylesTheme(sx ?? {});
-    const [otherStyles, otherProps] = getPropsTheme(rest);
-    const styles = _.merge(getStyleBySx, otherStyles);
+    const [otherStyles, { style, ...otherProps }] = getPropsTheme(rest);
+    const styles = _.merge(getStyleBySx, otherStyles, style);
 
     return (
       <View style={styles} ref={ref} {...otherProps}>

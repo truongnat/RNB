@@ -2,8 +2,8 @@ import { Box, Button, Typo } from '@packages/components/core';
 
 export const DemoButton = () => {
   return (
-    <Box w="full" h="full" shadow="3xl" p="12">
-      <Box rounded="xl" w="full" h="full" p="16">
+    <Box w="full" h="full" p="12">
+      <Box bg="gray.200" rounded="xl" w="full" h="full" p="16">
         <Typo variant="small">Variants:</Typo>
 
         <Button mt="12">

@@ -94,6 +94,7 @@ export type IThemeTypography<T = Dict> = {
 } & T;
 
 export type IThemeSpacing<T = Dict> = {
+  none: number;
   '0.5': number;
   '1': number;
   '1.5': number;
@@ -129,6 +130,7 @@ export type IThemeSpacing<T = Dict> = {
 } & T;
 
 export type IThemeSizes<T = Dict> = {
+  none: number;
   full: `${number}%`;
   '3xs': number;
   '2xs': number;
@@ -219,6 +221,18 @@ export type IThemeComponent<T = Dict> = {
     bodyM: Partial<StyledProps>;
     bodyS: Partial<StyledProps>;
     caption: Partial<StyledProps>;
+  };
+  avatar: {
+    default: Partial<StyledProps>;
+    large: Partial<StyledProps>;
+    medium: Partial<StyledProps>;
+    small: Partial<StyledProps>;
+  };
+  input: {
+    default: Partial<StyledProps>;
+    outline: Partial<StyledProps>;
+    filled: Partial<StyledProps>;
+    flushed: Partial<StyledProps>;
   };
 } & T;
 

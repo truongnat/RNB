@@ -15,23 +15,25 @@ export const DemoBoxAnimated = () => {
   };
 
   return (
-    <BoxAnimated
-      h={'xs'}
-      bg={'gray.200'}
-      display={'flex'}
-      alignItems={'center'}
-      justifyContent={'center'}
-      alignSelf={'center'}
-      mt={'52'}
-      rounded={'xl'}
-      style={{ width }}
-    >
-      <Button onPress={handlePress}>
-        <Typo>Increment</Typo>
-      </Button>
-      <Button variant={'danger'} mt={'12'} onPress={handleReset}>
-        <Typo color={'white'}>Reset</Typo>
-      </Button>
-    </BoxAnimated>
+    <Box w="full" h="full" p="12">
+      <BoxAnimated
+        bg="gray.200"
+        rounded="xl"
+        w="full"
+        h="full"
+        p="16"
+        alignSelf="center"
+        alignItems={'center'}
+        justifyContent={'center'}
+        style={{ width }}
+      >
+        <Button onPress={handlePress}>
+          <Typo>Increment</Typo>
+        </Button>
+        <Button variant={'danger'} mt={'12'} onPress={handleReset}>
+          <Typo color={'white'}>Reset</Typo>
+        </Button>
+      </BoxAnimated>
+    </Box>
   );
 };

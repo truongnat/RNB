@@ -1,9 +1,3 @@
-import { Icons } from './icons';
-import { Images } from './images';
-
-const Assets = {
-  Icons,
-  Images,
-};
-
-export default Assets;
+export { default as Icons } from './icons';
+export type { IconsName } from './icons';
+export { default as Images } from './images';

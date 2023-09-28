@@ -2,16 +2,16 @@ import _ from 'lodash';
 import { systemConfigs } from './styled-config';
 import { customTheme } from './extend-theme';
 
-export function omitKeyPropsStyleRn<T extends Dict = Dict>(props: T) {
+export function omitKeyPropsStyleRn<T extends Dict = Dict>(
+  props: T,
+  omitKeys?: string[],
+) {
   // remove children prop
   const styleProps = {} as Partial<T>;
   const otherProps = {} as Partial<T>;
 
   Object.keys(props).forEach((k: keyof T) => {
-    if (
-      typeof props[k] !== 'function' &&
-      !['children', 'style', 'ref'].includes(k.toString())
-    ) {
+    if (typeof props[k] !== 'function' && !omitKeys?.includes(k.toString())) {
       styleProps[k] = props[k];
     } else {
       otherProps[k] = props[k];
@@ -30,6 +30,8 @@ export const TypoNs = [
   'lineHeights',
   'letterSpacings',
 ];
+
+const OmitDefaultProps = ['children', 'style', 'ref', 'variant'];
 
 export const getStylesTheme = (props: Dict = {}) => {
   const dataSet = {} as Dict;
@@ -66,7 +68,10 @@ export const getStylesTheme = (props: Dict = {}) => {
   return dataSet;
 };
 
-export const getPropsTheme = (props: Dict) => {
-  const [stylesProps, { style, ...otherProps }] = omitKeyPropsStyleRn(props);
+export const getPropsTheme = (props: Dict, omitKeysOtherStyles?: string[]) => {
+  const [stylesProps, { style, ...otherProps }] = omitKeyPropsStyleRn(
+    props,
+    omitKeysOtherStyles ?? OmitDefaultProps,
+  );
   return [_.merge(getStylesTheme(stylesProps), style), otherProps];
 };

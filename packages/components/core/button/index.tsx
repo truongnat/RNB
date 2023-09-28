@@ -29,6 +29,7 @@ export type ButtonProps = SxProps &
   PressableProps & {
     variant?: GetComponentVariantToken<'button'>;
     text?: string;
+    isPressedStyle?: boolean;
   };
 
 export const Button = memo(
@@ -36,27 +37,31 @@ export const Button = memo(
     props: PropsWithChildren<ButtonProps>,
     ref: Ref<View>,
   ) {
-    const { sx, variant, children, ...rest } = props;
+    const { sx, variant, children, isPressedStyle = true, ...rest } = props;
 
     const variantStyles = getVariantTheme('button', variant);
     const getStyleBySx = getStylesTheme(sx);
     const [otherStyles, otherProps] = getPropsTheme(rest);
 
-    const getStyles = useCallback(({ pressed }: PressableStateCallbackType) => {
-      const styles = _.merge(variantStyles, getStyleBySx, otherStyles);
+    const getStyles = useCallback(
+      ({ pressed }: PressableStateCallbackType) => {
+        const styles = _.merge(variantStyles, getStyleBySx, otherStyles);
 
-      return StyleSheet.flatten<ViewStyle>([
-        styles,
-        {
-          backgroundColor: pressed
-            ? adjustColorAlpha(
-                (styles.backgroundColor as string) ?? 'white',
-                0.8,
-              )
-            : styles.backgroundColor,
-        },
-      ]);
-    }, []);
+        return StyleSheet.flatten<ViewStyle>([
+          styles,
+          {
+            backgroundColor:
+              isPressedStyle && pressed
+                ? adjustColorAlpha(
+                    (styles.backgroundColor as string) ?? 'white',
+                    0.8,
+                  )
+                : styles.backgroundColor,
+          },
+        ]);
+      },
+      [getStyleBySx, isPressedStyle, otherStyles, variantStyles],
+    );
 
     return (
       <Pressable style={getStyles} ref={ref} {...otherProps}>
