@@ -9,9 +9,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./android
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -26,10 +28,11 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
 
-      - name: Setup Node
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: ${{ matrix.node-version }}
 
       - name: Run Yarn Install
         run: |
@@ -42,7 +45,7 @@ jobs:
       - name: Upload application
         uses: actions/upload-artifact@v3
         with:
-          name: app
+          name: app-release.apk
           path: ${{github.workspace}}/android/app/release/app-release.apk
           retention-days: 30
           if-no-files-found: error
