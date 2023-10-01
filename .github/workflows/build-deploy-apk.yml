@@ -37,9 +37,11 @@ jobs:
         run: |
           cd ./android
           ./gradlew assembleRelease
+          ls -la
+          ls -la android/app/build
       - name: Upload application
         uses: actions/upload-artifact@v2
         with:
           name: app
-          path: ./android/app/release/app-release.apk
-          retention-days: 3
+          path: ./rnb/app/build/outputs/apk/release/app-release.apk
+          retention-days: 30
