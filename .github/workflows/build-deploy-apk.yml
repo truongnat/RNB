@@ -43,6 +43,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: app
-          path: ./app/release/app-release.apk
+          path: ${{github.workspace}}/android/app/release/app-release.apk
           retention-days: 30
           if-no-files-found: error
