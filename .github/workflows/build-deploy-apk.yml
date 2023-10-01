@@ -37,9 +37,13 @@ jobs:
         run: |
           cd ./android
           ./gradlew assembleRelease
+      - name: Checkout to app folder
+        run: |
+          cd ./android
       - name: Upload application
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: app
           path: ./app/release/app-release.apk
           retention-days: 30
+          if-no-files-found: error
