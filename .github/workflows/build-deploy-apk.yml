@@ -40,6 +40,7 @@ jobs:
       - name: Checkout to app folder
         run: |
           cd ./android
+          ls -la ./app/release
       - name: Upload application
         uses: actions/upload-artifact@v3
         with:
