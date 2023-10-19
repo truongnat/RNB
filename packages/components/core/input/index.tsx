@@ -1,37 +1,45 @@
 import {
   type GetComponentVariantToken,
   getVariantTheme,
-  getPropsTheme,
 } from '@packages/theme';
-import { StyleSheet, TextInput, TextInputProps } from 'react-native';
+import { TextInput, TextInputProps } from 'react-native';
 import isEqual from 'react-fast-compare';
-import React, { forwardRef, memo, useState, type Ref } from 'react';
+import React, { forwardRef, memo, useState, type Ref, ReactNode } from 'react';
 import { Box, BoxProps } from '../box';
+import { IInputVariantStyle } from '@packages/theme/components';
+import _ from 'lodash';
+import { Typo } from '../typo';
 
 export type InputProps = {
   variant?: GetComponentVariantToken<'input'>;
   containerProps?: BoxProps;
+  leadingVisual?: ReactNode;
+  trailingVisual?: ReactNode;
+  label?: string | ReactNode;
 } & TextInputProps;
 
 export const Input = memo(
   forwardRef(function Input(props: InputProps, ref: Ref<TextInput>) {
     const [isFocus, setIsFocus] = useState(false);
-    const { variant, containerProps = {}, ...rest } = props;
-    const variantStyles = getVariantTheme('input', variant);
+    const {
+      variant,
+      containerProps = {},
+      leadingVisual,
+      trailingVisual,
+      label,
+      ...rest
+    } = props;
+    const variantStyles = getVariantTheme(
+      'input',
+      variant,
+    ) as IInputVariantStyle;
 
     const { onFocus, onBlur, style } = rest ?? {};
 
-    const getStyleInput = () => {
-      const styleFocus: Dict = {};
-      if (isFocus) {
-        styleFocus.borderColor = 'blue.500';
-      }
-
-      return StyleSheet.flatten([
-        variantStyles,
-        getPropsTheme(styleFocus),
-      ]) as Dict;
-    };
+    const containerStyle = _.merge(
+      variantStyles.container,
+      isFocus ? { borderColor: 'blue.500' } : {},
+    ) as Dict;
 
     const handleFocus = (event: any) => {
       setIsFocus(true);
@@ -43,16 +51,43 @@ export const Input = memo(
       onBlur?.(event);
     };
 
+    const getLabel = () => {
+      if (typeof label === 'string') {
+        return <Typo style={variantStyles.labelText}>{label}</Typo>;
+      }
+
+      return label;
+    };
+
     return (
-      <Box height={40} w="full" style={getStyleInput()} {...containerProps}>
-        <TextInput
-          ref={ref}
-          style={StyleSheet.flatten([style, { height: '100%' }])}
-          placeholder={variant}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          {...rest}
-        />
+      <Box w="full">
+        <Box style={variantStyles.label}>{getLabel()}</Box>
+        <Box
+          height={40}
+          w="full"
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="space-between"
+          px={'8'}
+          {...containerStyle}
+          {...containerProps}
+        >
+          {leadingVisual && (
+            <Box style={variantStyles.leadingVisual}>{leadingVisual}</Box>
+          )}
+          <TextInput
+            ref={ref}
+            style={[style, variantStyles.input]}
+            placeholder={variant}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            {...rest}
+          />
+          {trailingVisual && (
+            <Box style={variantStyles.trailingVisual}>{trailingVisual}</Box>
+          )}
+        </Box>
       </Box>
     );
   }),

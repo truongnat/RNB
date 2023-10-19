@@ -1,13 +1,16 @@
 import { ApplicationScreenProps } from '@packages/@types';
 import { useEffect } from 'react';
 import { Box, Typo } from '@packages/components/core';
+import { useTextLoading } from '@packages/hooks';
 
 const FlashScreen = ({ navigation }: ApplicationScreenProps) => {
+  const loadingText = useTextLoading();
+
   const init = async () => {
     await new Promise(resolve =>
       setTimeout(() => {
         resolve(true);
-      }, 2000),
+      }, 3000),
     );
 
     navigation.reset({
@@ -18,6 +21,7 @@ const FlashScreen = ({ navigation }: ApplicationScreenProps) => {
 
   useEffect(() => {
     init();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -27,7 +31,7 @@ const FlashScreen = ({ navigation }: ApplicationScreenProps) => {
       justifyContent={'center'}
       alignItems={'center'}
     >
-      <Typo>Loading...</Typo>
+      <Typo>{loadingText}</Typo>
     </Box>
   );
 };

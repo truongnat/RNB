@@ -15,6 +15,7 @@ import React, {
   memo,
   type PropsWithChildren,
 } from 'react';
+import { ITypoVariantStyle } from '@packages/theme/components';
 
 export type TypoProps = SxProps &
   StyledProps &
@@ -22,15 +23,24 @@ export type TypoProps = SxProps &
     variant?: GetComponentVariantToken<'typo'>;
   };
 
+const injectFonts = {
+  fontFamily: 'Roboto Mono',
+};
+
 export const Typo = memo(
   forwardRef(function Typo(
     { sx, variant, children, ...rest }: PropsWithChildren<TypoProps>,
     ref: LegacyRef<Text>,
   ) {
-    const variantStyles = getVariantTheme('typo', variant);
+    const variantStyles = getVariantTheme('typo', variant) as ITypoVariantStyle;
     const getStyleBySx = getStylesTheme(sx ?? {});
     const [otherStyles, otherProps] = getPropsTheme(rest);
-    const styles = _.merge(variantStyles, getStyleBySx, otherStyles);
+    const styles = _.merge(
+      variantStyles.container,
+      getStyleBySx,
+      otherStyles,
+      injectFonts,
+    );
 
     return (
       <Text style={styles} ref={ref} {...otherProps}>

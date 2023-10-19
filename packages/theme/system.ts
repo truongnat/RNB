@@ -2,6 +2,7 @@ import { customTheme } from './extend-theme';
 import { TThemeTokens } from './token-type';
 import { systemConfigs } from './styled-config';
 import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
+import { IButtonVariant, IInputVariant, ITypoVariant } from './components';
 
 export type IRangeValue<T = string> = {
   50: T;
@@ -36,9 +37,7 @@ export type IThemeColors<T = Dict> = {
 
 export type IThemeTypography<T = Dict> = {
   fonts: {
-    body: string;
-    heading: string;
-    mono: string;
+    default: string;
   } & Dict['fonts'];
   fontSizes: {
     xs: number;
@@ -204,23 +203,23 @@ export type IThemeShadows<T = Dict> = {
 
 export type IThemeComponent<T = Dict> = {
   button: {
-    default: Partial<StyledProps>;
-    primary: Partial<StyledProps>;
-    danger: Partial<StyledProps>;
-    outline: Partial<StyledProps>;
-    invisible: Partial<StyledProps>;
+    default: IButtonVariant;
+    primary: IButtonVariant;
+    danger: IButtonVariant;
+    outline: IButtonVariant;
+    invisible: IButtonVariant;
   };
   typo: {
-    default: Partial<StyledProps>;
-    display: Partial<StyledProps>;
-    large: Partial<StyledProps>;
-    medium: Partial<StyledProps>;
-    small: Partial<StyledProps>;
-    subTitle: Partial<StyledProps>;
-    bodyL: Partial<StyledProps>;
-    bodyM: Partial<StyledProps>;
-    bodyS: Partial<StyledProps>;
-    caption: Partial<StyledProps>;
+    default: ITypoVariant;
+    display: ITypoVariant;
+    large: ITypoVariant;
+    medium: ITypoVariant;
+    small: ITypoVariant;
+    subTitle: ITypoVariant;
+    bodyL: ITypoVariant;
+    bodyM: ITypoVariant;
+    bodyS: ITypoVariant;
+    caption: ITypoVariant;
   };
   avatar: {
     default: Partial<StyledProps>;
@@ -229,10 +228,10 @@ export type IThemeComponent<T = Dict> = {
     small: Partial<StyledProps>;
   };
   input: {
-    default: Partial<StyledProps>;
-    outline: Partial<StyledProps>;
-    filled: Partial<StyledProps>;
-    flushed: Partial<StyledProps>;
+    default: IInputVariant;
+    outline: IInputVariant;
+    filled: IInputVariant;
+    flushed: IInputVariant;
   };
 } & T;
 

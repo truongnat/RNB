@@ -19,9 +19,10 @@ export const DemoInput = () => {
           alignItems="flex-start"
           justifyContent="flex-start"
           flex={1}
+          mt={'16'}
         >
           {variants.map(variant => (
-            <Input key={variant} variant={variant} />
+            <Input label={variant} key={variant} variant={variant} />
           ))}
         </Box>
       </Box>

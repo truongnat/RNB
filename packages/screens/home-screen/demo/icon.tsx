@@ -6,20 +6,20 @@ export const DemoIcon = () => {
       <Box bg="gray.200" rounded="xl" w="full" h="full" p="16">
         <Typo variant="small">Icons:</Typo>
         <Box flexDirection="row" flexWrap="wrap" gap={12} mt={'12'}>
-          <Icon iconName="home" size={56} fill={'green'} />
-          <Icon iconName="home" size={40} fill={'orange'} />
-          <Icon iconName="home" size={32} fill={'purple'} />
-          <Icon iconName="home" size={28} fill={'red'} />
-          <Icon iconName="home" fill={'skyblue'} />
-          <Icon iconName="home" size={20} fill={'teal'} />
+          <Icon name="home" size={56} fill={'green'} />
+          <Icon name="home" size={40} fill={'orange'} />
+          <Icon name="home" size={32} fill={'purple'} />
+          <Icon name="home" size={28} fill={'red'} />
+          <Icon name="home" fill={'skyblue'} />
+          <Icon name="home" size={20} fill={'teal'} />
         </Box>
         <Box flexDirection="row" flexWrap="wrap" gap={12} mt={'12'}>
-          <Icon iconName="settings" size={56} rounded="full" fill={'green'} />
-          <Icon iconName="settings" size={40} rounded="full" fill={'orange'} />
-          <Icon iconName="settings" size={32} rounded="full" fill={'purple'} />
-          <Icon iconName="settings" size={28} rounded="full" fill={'red'} />
-          <Icon iconName="settings" rounded="full" fill={'skyblue'} />
-          <Icon iconName="settings" size={20} rounded="full" fill={'teal'} />
+          <Icon name="settings" size={56} fill={'green'} />
+          <Icon name="settings" size={40} fill={'orange'} />
+          <Icon name="settings" size={32} fill={'purple'} />
+          <Icon name="settings" size={28} fill={'red'} />
+          <Icon name="settings" fill={'skyblue'} />
+          <Icon name="settings" size={20} fill={'teal'} />
         </Box>
       </Box>
     </Box>

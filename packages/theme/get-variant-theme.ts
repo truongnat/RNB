@@ -9,8 +9,18 @@ export const getVariantTheme = <T extends ComponentsToken = ComponentsToken>(
   const variant = customTheme.components[componentName][
     variantName ?? 'default'
   ] as Dict;
-  if (!variant) {
+
+  const keys = Object.keys(variant);
+
+  const output = {} as Dict;
+
+  if (!variant || keys.length === 0) {
     return {};
   }
-  return getPropsTheme(variant)[0];
+
+  keys.forEach(key => {
+    output[key] = getPropsTheme(variant[key] as Dict)[0];
+  });
+
+  return output;
 };

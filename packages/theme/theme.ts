@@ -1,3 +1,4 @@
+import { button, input, typo } from './components';
 import { ITheme } from './system';
 
 export const defaultTheme: ITheme = {
@@ -324,9 +325,7 @@ export const defaultTheme: ITheme = {
   },
   typography: {
     fonts: {
-      body: 'system-ui, sans-serif',
-      heading: 'Georgia, serif',
-      mono: 'Menlo, monospace',
+      default: 'Roboto Mono',
     },
     fontSizes: {
       xs: 12, // 0.75rem * 16px/rem = 12px
@@ -381,99 +380,9 @@ export const defaultTheme: ITheme = {
     },
   },
   components: {
-    button: {
-      default: {
-        rounded: 'md',
-        alignSelf: 'center',
-        justifyContent: 'center',
-        shadow: 'base',
-        px: '12',
-        py: '6',
-        bg: 'primary',
-        borderColor: 'gray.200',
-        borderWidth: 1,
-      },
-      invisible: {
-        rounded: 'md',
-        py: '6',
-        alignSelf: 'center',
-        justifyContent: 'center',
-        shadow: 'base',
-        px: '12',
-      },
-      primary: {
-        rounded: 'md',
-        py: '6',
-        alignSelf: 'center',
-        justifyContent: 'center',
-        shadow: 'base',
-        px: '12',
-        bg: 'green.500',
-        borderColor: 'transparent',
-        borderWidth: 1,
-      },
-      danger: {
-        rounded: 'md',
-        py: '6',
-        alignSelf: 'center',
-        justifyContent: 'center',
-        shadow: 'base',
-        px: '12',
-        bg: 'red.600',
-        borderColor: 'transparent',
-        borderWidth: 1,
-      },
-      outline: {
-        rounded: 'md',
-        py: '6',
-        alignSelf: 'center',
-        justifyContent: 'center',
-        shadow: 'base',
-        px: '12',
-        bg: 'primary',
-        borderColor: 'gray.200',
-        borderWidth: 1,
-      },
-    },
-    typo: {
-      default: {
-        fs: 'sm',
-        fw: 'normal',
-      },
-      display: {
-        fs: '4xl',
-        fw: 'medium',
-      },
-      large: {
-        fs: '3xl',
-        fw: 'semibold',
-      },
-      medium: {
-        fs: 'xl',
-        fw: 'semibold',
-      },
-      small: {
-        fs: 'md',
-        fw: 'semibold',
-      },
-      subTitle: {
-        fs: 'xl',
-        fw: 'normal',
-      },
-      bodyL: {
-        fs: 'md',
-      },
-      bodyM: {
-        fs: 'sm',
-      },
-      bodyS: {
-        fs: 'xs',
-      },
-      caption: {
-        fs: 'xs',
-        fw: 'normal',
-      },
-    },
+    button: button,
+    typo: typo,
+    input: input,
     avatar: {
       default: {
         width: 24,
@@ -490,37 +399,6 @@ export const defaultTheme: ITheme = {
       small: {
         width: 18,
         height: 18,
-      },
-    },
-    input: {
-      default: {
-        px: '12',
-        py: '8',
-        borderWidth: 1,
-        borderColor: 'transparent',
-        rounded: 'md',
-      },
-      filled: {
-        bg: 'white',
-        px: '12',
-        py: '8',
-        rounded: 'md',
-        borderWidth: 1,
-        borderColor: 'transparent',
-      },
-      flushed: {
-        px: '12',
-        py: '8',
-        rounded: 'md',
-        borderBottomWidth: 1,
-        borderColor: 'gray.400',
-      },
-      outline: {
-        borderWidth: 1,
-        borderColor: 'gray.400',
-        rounded: 'md',
-        px: '12',
-        py: '8',
       },
     },
   },

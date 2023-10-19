@@ -62,7 +62,6 @@ export const Avatar = memo(
         bg="transparent"
         overflow="hidden"
         rounded={square ? 'sm' : 'full'}
-        isPressedStyle={false}
         {...variantStyles}
         {...other}
       >
